@@ -1,10 +1,10 @@
-import React from 'react';
-import './App.css';
+import React,{FC} from 'react';
+import Table from './Table/table';
 
-function App() {
+const  App:FC=()=> {
   return (
     <div className="App">
-     
+     <Table/>
     </div>
   );
 }
