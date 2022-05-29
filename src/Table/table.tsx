@@ -1,10 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
+import { useDispatch, useSelector } from "react-redux";
+import { iRootReducer } from "../Redux/reducer";
 import './table.css'
-
+import { AnyPtrRecord } from "dns";
 
 const PersonInformetion: FC = () => {
-    const [data, setData] = useState<any>([])
+    const [color, setColor] = useState("")
+    const dispatch = useDispatch()
+    const selector = useSelector((state: iRootReducer) => state.user.user)
+
     const URL = "http://intern-2022.arpify.com/init"
 
     useEffect(() => {
@@ -15,7 +20,7 @@ const PersonInformetion: FC = () => {
             },
             body: JSON.stringify(
                 {
-                    "firstName": "Harut",
+                    "firstName": "Harutyun",
                     "lastName": "Tovmasyan",
                     "birthDay": "1999-04-01",
                     "gender": "female"
@@ -24,34 +29,33 @@ const PersonInformetion: FC = () => {
 
         })
             .then(response => response.json())
-            .then(date => setData(date))
+            .then(date => dispatch({ type: "ADD_PERSON", payload: [...date] }))
     }, [])
-    console.log(data)
+   const  checkColor=(person: any) => selector.find(p => p.firstName === "Harutyun" && p.lastName === person.lastName) ? "red" : "white" 
     return (
         <Box className="table">
             <TableContainer component={Paper}>
                 <Table >
                     <TableHead>
                         <TableRow>
-                            <TableCell align="right">FirstName</TableCell>
-                            <TableCell align="right">LastdName</TableCell>
-                            <TableCell align="right">BirthDay</TableCell>
-                            <TableCell align="right">Gender</TableCell>
+                            <TableCell align="center">FirstName</TableCell>
+                            <TableCell align="center">LastdName</TableCell>
+                            <TableCell align="center">BirthDay</TableCell>
+                            <TableCell align="center">Gender</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
-                            data.map((person: any) =>
-                                <TableRow>
-                                    <TableCell align="right">{person.firstName}</TableCell>
-                                    <TableCell align="right">{person.lastName}</TableCell>
-                                    <TableCell align="right">{person.birthDay}</TableCell>
-                                    <TableCell align="right">{person.gender}</TableCell>
+                            selector.map((item) =>
+                                <TableRow  >
+                                    <TableCell align="center" sx={{background:checkColor(item)}}>{item.firstName}</TableCell>
+                                    <TableCell align="center" sx={{background:checkColor(item)}}>{item.lastName}</TableCell>
+                                    <TableCell align="center" sx={{background:checkColor(item)}}>{item.birthDay}</TableCell>
+                                    <TableCell align="center" sx={{background:checkColor(item)}}>{item.gender}</TableCell>
                                 </TableRow>
-
                             )
                         }
-
+                        {/* <button>15</button> */}
                     </TableBody>
                 </Table>
             </TableContainer>
