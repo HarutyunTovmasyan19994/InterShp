@@ -1,0 +1,16 @@
+.boxForm{
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.form{
+    width: 250px;
+}
+.form form  p{
+    width: 100%;
+    margin: 15px!important;
+}
+#fullWidth{
+    width: 100%;
+}

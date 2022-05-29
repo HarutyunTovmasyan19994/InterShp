@@ -3,6 +3,7 @@ import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useDispatch, useSelector } from "react-redux";
 import { iRootReducer } from "../Redux/reducer";
+import {Link} from 'react-router-dom'
 import './table.css'
 
 const PersonInformetion: FC = () => {
@@ -62,7 +63,10 @@ const PersonInformetion: FC = () => {
                     </Table>
                 </TableContainer>
             </Box>
-            <Button className="btn"><ArrowForwardIosIcon/></Button>
+            <Link to='/form'>
+            <ArrowForwardIosIcon/>
+            </Link>
+        
         </Box>
     )
 }
