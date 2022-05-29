@@ -1,7 +1,7 @@
-import {iAction, iUserData} from "../../interface";
+import { iAction, iUserData } from "../../interface";
 
 export interface iTodo {
-    user:iUserData[]
+    user: iUserData[]
 }
 
 const defaultState: iTodo = {
@@ -12,8 +12,8 @@ const defaultState: iTodo = {
 export const reducer = (state = defaultState, action: iAction) => {
     switch (action.type) {
         case "ADD_PERSON":
-            return {...state, user: action.payload}
-    
+            return { ...state, user: action.payload }
+
         default:
             return state
     }

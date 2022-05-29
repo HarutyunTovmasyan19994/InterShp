@@ -1,5 +1,17 @@
-.table{
+.table {
     width: 100%;
-display: flex;
-justify-content: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    width: 45%;
+    height: 500px;
+
+}
+.btn{
+    padding: 8px 16px;
 }

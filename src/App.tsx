@@ -1,10 +1,10 @@
-import React,{FC} from 'react';
+import React, { FC } from 'react';
 import PersonInformetion from './Table/table';
 
-const  App:FC=()=> {
+const App: FC = () => {
   return (
     <div className="App">
-     <PersonInformetion/>
+      <PersonInformetion />
     </div>
   );
 }
