@@ -32,6 +32,7 @@ const PersonInformetion: FC = () => {
             .then(date => dispatch({ type: "ADD_PERSON", payload: [...date] }))
     }, [])
     const checkColor = (person: any) => selector.find(p => p.firstName === "Harutyun" && p.lastName === person.lastName) ? "red" : "white"
+    console.log(selector)
     return (
         <Box className="table">
             <Box className="box">
