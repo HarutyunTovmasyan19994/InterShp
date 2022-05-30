@@ -1,9 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material'
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useDispatch, useSelector } from "react-redux";
 import { iRootReducer } from "../Redux/reducer";
-import {Link} from 'react-router-dom'
 import './table.css'
 
 const PersonInformetion: FC = () => {
@@ -32,7 +30,6 @@ const PersonInformetion: FC = () => {
             .then(date => dispatch({ type: "ADD_PERSON", payload: [...date] }))
     }, [])
     const checkColor = (person: any) => selector.find(p => p.firstName === "Harutyun" && p.lastName === person.lastName) ? "red" : "white"
-    console.log(selector)
     return (
         <Box className="table">
             <Box className="box">
