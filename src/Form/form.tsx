@@ -15,31 +15,38 @@ const Form: FC = () => {
         const { name, value } = event.target
         setPersonData({ ...personData, [name]: value })
     }
+    
+  
+
 
     const suumbitHandle = (e: any) => {
         e.preventDefault()
+        let formData = new FormData(e.target);
+        // let formData = new FormData(personData);
+        // const value  = Object.fromEntries(formData.entries())
        fetch(URL, {
             method: "POST",
             headers: {
                 "Content-Type": "multipart/form-data"
             },
-            body: JSON.stringify(personData)
+            body:JSON.stringify(formData)
         })
             .then(res => res.json())
-            .then(data => dispatch({ type: "ADD_PERSON", payload: [...data]}))
+            .then(data => console.log(data))
+            .catch(err=>{
+                console.log(err,"Error")
+            })
         
     }
-    const Image = (event: ChangeEvent<HTMLInputElement>) => {
+    const Image = (event: ChangeEvent<HTMLInputElement>) => {  
         if (event.target.files) {
-        
            getBase64(event.target.files[0],(value)=>  setPersonData({ ...personData, 'photo':value}))
         }
     }
-    console.log(personData)
     return (
         <Box className='boxForm'>
             <Box className="form">
-                <form onSubmit={(e) => suumbitHandle(e)}>
+                <form onSubmit={(e) => suumbitHandle(e)} method="POST">
                     <div>
                          <TextField label="firstName" id="fullWidth" onChange={formInformation} name="firstName" value={personData.firstName} />
                     </div>
@@ -55,9 +62,9 @@ const Form: FC = () => {
                     <div>
                         <TextField type="file"  id="fullWidth" label="CHOOSE PICTURES"  onChange={Image} name="photo"/>
                     </div>
-                    <div>
+                    {/* <div>
                         <TextField label="fullWidth" id="fullWidth" />
-                    </div>
+                    </div> */}
                     <div>
                         <Button type="submit"> Sumbit </Button>
                         <Button  onClick={() => dispatch({type: "DEFAULT_REDUX"})}> Refresh </Button>
