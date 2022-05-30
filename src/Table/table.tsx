@@ -63,9 +63,12 @@ const PersonInformetion: FC = () => {
                     </Table>
                 </TableContainer>
             </Box>
-            <Link to='/form'>
-            <ArrowForwardIosIcon/>
+            {/* <Button>
+                 <Link to='/form'>
+            ffff
             </Link>
+            </Button> */}
+           
         
         </Box>
     )

@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState, ChangeEvent } from 'react'
 import { Box, Button, TextField } from '@mui/material'
-import { Link } from 'react-router-dom'
 import './form.css'
 
 const Form: FC = () => {
@@ -66,13 +65,6 @@ const Form: FC = () => {
                     </p>
                 </form>
             </Box>
-            <Box>
-                <Link to='/person-informetion'>
-                    Prev
-                </Link>
-            </Box>
-
-
         </Box>
     )
 }
